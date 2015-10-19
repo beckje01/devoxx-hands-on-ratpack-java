@@ -1,0 +1,20 @@
+include \
+  'lab-01',
+  'lab-01-answer',
+  'lab-02',
+  'lab-02-answer',
+  'lab-03',
+  'lab-03-answer',
+  'lab-04',
+  'lab-04-answer',
+  'lab-05',
+  'lab-05-answer'
+
+rootProject.name = 'hands-on-ratpack'
+
+def setBuildFile(project) {
+  project.buildFileName = "${project.name}.gradle"
+  project.children.each this.&setBuildFile
+}
+
+setBuildFile rootProject
