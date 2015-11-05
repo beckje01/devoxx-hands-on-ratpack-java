@@ -29,14 +29,14 @@ subprojects {
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
   }
 
-  def name = project.name - "-answer"
+  def name = (project.name - "-answer").replace('-', '')
   mainClassName = "${name}.${name.capitalize()}"
 }
 
 idea {
-    project {
-        jdkName "1.8"
-        languageLevel "1.8"
-	      vcs = 'Git'
-    }
+  project {
+    jdkName "1.8"
+    languageLevel "1.8"
+    vcs = 'Git'
+  }
 }
