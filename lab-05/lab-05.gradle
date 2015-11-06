@@ -1,3 +1,5 @@
 dependencies {
+  compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.5.3'
   compile ratpack.dependency('guice')
+  compile ratpack.dependency('handlebars')
 }

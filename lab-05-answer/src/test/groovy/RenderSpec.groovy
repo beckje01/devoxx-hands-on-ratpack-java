@@ -1,13 +1,14 @@
 import groovy.json.JsonSlurper
-import ratpack.groovy.test.GroovyRatpackMainApplicationUnderTest
+import lab05.Lab05
 import ratpack.test.ApplicationUnderTest
+import ratpack.test.MainClassApplicationUnderTest
 import ratpack.test.http.TestHttpClient
 import spock.lang.Shared
 import spock.lang.Specification
 
 class RenderSpec extends Specification {
   @Shared
-  ApplicationUnderTest appUnderTest = new GroovyRatpackMainApplicationUnderTest()
+  ApplicationUnderTest appUnderTest = new MainClassApplicationUnderTest(Lab05)
   @Delegate
   TestHttpClient testClient = appUnderTest.httpClient
 
@@ -22,14 +23,20 @@ class RenderSpec extends Specification {
     */
   }
 
-  def "02 - can render a Groovy Markup Template"() {
+  def "02 - can render a Handlebars Template"() {
     expect:
-    getText("welcome") == "<!DOCTYPE html><html><body><p>Hello Devoxx!</p></body></html>"
+    getText("welcome") == '''<!DOCTYPE html>
+      |<html>
+      |<body>
+      |  <p>Hello Devoxx!</p>
+      |</body>
+      |</html>
+      |'''.stripMargin()
 
     /*
     Hint:
-    Take a look at `ratpack.groovy.template.MarkupTemplateModule`
-    A markup template is already provided in `src/ratpack/templates`
+    Take a look at `ratpack.handlebars.HandlebarsModule`
+    A markup template is already provided in `src/ratpack/handlebars`
     */
   }
 
@@ -58,11 +65,10 @@ class RenderSpec extends Specification {
 
     /*
     Hint:
-    Take a look at `ratpack.groovy.render.GroovyRendererSupport` to create your own renderer for `Book`
+    Take a look at `ratpack.render.RendererSupport` to create your own renderer for `Book`
     Renderers are looked up in the Context by type, you will need to make your new renderer available.
 
-    Ratpack's Jackson module (`ratpack.jackson.guice.JacksonModule`) has a support for rendering as JSON
-    To use this in your renderer you will need to add a new build dependency on `ratpack-jackson-guice`
+    Ratpack has support for rendering JSON via `ratpack.jackson.Jackson.json()`
     */
   }
 
@@ -91,9 +97,10 @@ class RenderSpec extends Specification {
 
     /*
     Hint:
-    Take a look at `ratpack.groovy.Groovy#markupBuilder(contentType, encoding, closure)`
+    Take a look at `com.fasterxml.jackson.dataformat.xml.XmlMapper`
+    for turning POJOs into XML
 
-    Different content types can be rendered using the same renderer using `ratpack.groovy.handling.GroovyContext#byContent(closure)`
+    Different content types can be rendered using the same renderer using `ratpack.handling.Context#byContent(Action<? super ByContentSpec>)`
     */
   }
 
