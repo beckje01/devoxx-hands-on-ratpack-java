@@ -28,11 +28,11 @@ class SoapActionHandlerUnitSpec extends Specification {
 
     /*
     Hint:
-    You will need to complete the `SoapActionHandler` in src/main/groovy, currently it is just delegating to the next
+    You will need to complete the `SoapActionHandler` in src/main/java, currently it is just delegating to the next
     handler
 
     Don't forget to update Lab02.java with your new handler and check `HandlerSpec` still passes
-    Take a look at `ratpack.groovy.handling.GroovyChain#all(handler)`
+    Take a look at `ratpack.handling.Chain#all(handler)`
     */
   }
 

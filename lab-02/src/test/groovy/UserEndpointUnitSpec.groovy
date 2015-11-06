@@ -34,12 +34,10 @@ class UserEndpointUnitSpec extends Specification {
 
     /*
     Hint:
-    You will need to create `UserEndpoint` in src/main/groovy, which doesn't exist yet
-
-    Take a look at `ratpack.groovy.handling.GroovyChainAction` class level Javadoc
+    You will need to create `UserEndpoint` in src/main/java, which isn't implemented yet
 
     Don't forget to update Lab02.java with your new handler and check `HandlerSpec` still passes
-    Take a look at `ratpack.groovy.handling.GroovyChain#prefix(prefix, action)
+    Take a look at `ratpack.handling.Chain#prefix(String prefix, Action<? super Chain> action)`
     */
   }
 

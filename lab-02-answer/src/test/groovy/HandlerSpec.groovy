@@ -27,13 +27,13 @@ class HandlerSpec extends Specification {
 
     /*
     Hint:
-    The `handlers` method in `Lab02.java` delegates to `ratpack.func.Action<ratpack.handling.Chain>`.  It's this class
+    The `handlers` method in `Lab02.java` comes from `ratpack.handling.Chain`.  It's this class
     and its Builder pattern that will allow us to fluently compose our handler chain.
 
     Try adding an `all` handler to make this test pass.
 
     Take a look at `ratpack.handling.Chain` class level Javadoc
-    and `ratpack.groovy.handling.GroovyChain#all(handler)`
+    and `ratpack.handling.Chain#all(handler)`
     */
   }
 
@@ -46,10 +46,10 @@ class HandlerSpec extends Specification {
 
     /*
     Hint:
-    `GroovyChain` has various methods for adding handlers based on a HTTP method binding, some of which allow you to
+    `ratpack.handling.Chain` has various methods for adding handlers based on a HTTP method binding, some of which allow you to
     specify a path binding too.
 
-    Take a look at `ratpack.groovy.handling.GroovyChain#get(path, handler)`
+    Take a look at `ratpack.handling.Chain#get(path, handler)`
 
     If you used `all` in the previous test, don't forget it will match on "all" requests.  Handler order is important!
     */
@@ -104,7 +104,7 @@ class HandlerSpec extends Specification {
 
     /*
     Hint:
-    Take a look at `ratpack.groovy.handling.GroovyContext#byMethod(closure)`
+    Take a look at `ratpack.handling.Context#byMethod(ratpack.func.Action<? super ratpack.handling.ByMethodSpec>)`
     */
   }
 
@@ -202,8 +202,8 @@ class HandlerSpec extends Specification {
     Hint:
     The SOAPAction is sent as a HTTP header, try creating a handler that checks for that header
 
-    Take a look at using `ratpack.groovy.handling.GroovyChain#when(test, handlers)`
-    or `ratpack.groovy.handling.GroovyChain#onlyIf(test, handler)`
+    Take a look at using `ratpack.handling.Chain#when(test, handlers)`
+    or `ratpack.handling.Chain#onlyIf(test, handler)`
     */
   }
 }
