@@ -1,12 +1,13 @@
-import ratpack.groovy.test.GroovyRatpackMainApplicationUnderTest
+import lab03.Lab03
 import ratpack.test.ApplicationUnderTest
+import ratpack.test.MainClassApplicationUnderTest
 import ratpack.test.http.TestHttpClient
 import spock.lang.Shared
 import spock.lang.Specification
 
 class BookSpec extends Specification {
   @Shared
-  ApplicationUnderTest appUnderTest = new GroovyRatpackMainApplicationUnderTest()
+  ApplicationUnderTest appUnderTest = new MainClassApplicationUnderTest(Lab03)
   @Delegate
   TestHttpClient testClient = appUnderTest.httpClient
 
