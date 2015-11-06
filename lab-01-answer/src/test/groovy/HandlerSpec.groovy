@@ -12,7 +12,7 @@ import spock.lang.Unroll
 class HandlerSpec extends Specification {
   // Start our application and make it available for testing. `@Shared` means the same app instance will be used for _all_ tests
   @Shared
-  ApplicationUnderTest appUnderTest = new MainClassApplicationUnderTest(Lab01.class);
+  ApplicationUnderTest appUnderTest = new MainClassApplicationUnderTest(Lab01)
 
   // ApplicationUnderTest includes a TestHttpClient that we can use for sending requests to our application.
   @Delegate
@@ -27,7 +27,7 @@ class HandlerSpec extends Specification {
 
     /*
     Hint:
-    The `handlers` closure in `Lab01.java` delegates to `ratpack.groovy.handling.GroovyChain`.  It's this class
+    The `handlers` method in `Lab01.java` delegates to `ratpack.groovy.handling.GroovyChain`.  It's this class
     and its Builder pattern that will allow us to fluently compose our handler chain.
 
     Try adding an `all` handler to make this test pass.

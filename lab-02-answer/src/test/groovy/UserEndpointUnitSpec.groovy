@@ -1,3 +1,4 @@
+import lab02.UserEndpoint
 import ratpack.groovy.test.handling.GroovyRequestFixture
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -37,7 +38,7 @@ class UserEndpointUnitSpec extends Specification {
 
     Take a look at `ratpack.groovy.handling.GroovyChainAction` class level Javadoc
 
-    Don't forget to update Ratpack.groovy with your new handler and check `HandlerSpec` still passes
+    Don't forget to update Lab02.java with your new handler and check `HandlerSpec` still passes
     Take a look at `ratpack.groovy.handling.GroovyChain#prefix(prefix, action)
     */
   }

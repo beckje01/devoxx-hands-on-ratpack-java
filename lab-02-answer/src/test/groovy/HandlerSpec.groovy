@@ -1,8 +1,9 @@
 import groovy.io.GroovyPrintStream
+import lab02.Lab02
 import org.slf4j.LoggerFactory
-import ratpack.groovy.test.GroovyRatpackMainApplicationUnderTest
 import ratpack.http.client.RequestSpec
 import ratpack.test.ApplicationUnderTest
+import ratpack.test.MainClassApplicationUnderTest
 import ratpack.test.http.TestHttpClient
 import spock.lang.Shared
 import spock.lang.Specification
@@ -11,7 +12,7 @@ import spock.lang.Unroll
 class HandlerSpec extends Specification {
   // Start our application and make it available for testing. `@Shared` means the same app instance will be used for _all_ tests
   @Shared
-  ApplicationUnderTest appUnderTest = new GroovyRatpackMainApplicationUnderTest()
+  ApplicationUnderTest appUnderTest = new MainClassApplicationUnderTest(Lab02)
 
   // ApplicationUnderTest includes a TestHttpClient that we can use for sending requests to our application.
   @Delegate
@@ -26,7 +27,7 @@ class HandlerSpec extends Specification {
 
     /*
     Hint:
-    The `handlers` closure in `Ratpack.groovy` delegates to `ratpack.groovy.handling.GroovyChain`.  It's this class
+    The `handlers` method in `Lab02.java` delegates to `ratpack.func.Action<ratpack.handling.Chain>`.  It's this class
     and its Builder pattern that will allow us to fluently compose our handler chain.
 
     Try adding an `all` handler to make this test pass.

@@ -1,3 +1,5 @@
+import lab02.SoapActionHandler
+import ratpack.groovy.Groovy
 import ratpack.groovy.test.handling.GroovyRequestFixture
 import spock.lang.Specification
 
@@ -5,7 +7,7 @@ class SoapActionHandlerUnitSpec extends Specification {
 
   def "can handle soap requests"() {
     given:
-    def handlerUnderTest = new SoapActionHandler("foo", {
+    def handlerUnderTest = new SoapActionHandler("foo", Groovy.groovyHandler{
       response.send(request.headers.get("SOAPAction"))
     })
 
@@ -29,7 +31,7 @@ class SoapActionHandlerUnitSpec extends Specification {
     You will need to complete the `SoapActionHandler` in src/main/groovy, currently it is just delegating to the next
     handler
 
-    Don't forget to update Ratpack.groovy with your new handler and check `HandlerSpec` still passes
+    Don't forget to update Lab02.java with your new handler and check `HandlerSpec` still passes
     Take a look at `ratpack.groovy.handling.GroovyChain#all(handler)`
     */
   }
