@@ -14,7 +14,7 @@ To complete this lab:
 Guice.
 1. Make sure `BookSpec` passes.
 
-This time the hints are in the TODO within `Ratpack.groovy`
+This time the hints are in the TODO within `Lab04.java`
 
 ## This lab covers
 

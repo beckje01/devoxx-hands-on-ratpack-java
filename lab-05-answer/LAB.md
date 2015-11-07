@@ -12,11 +12,11 @@ one of your own, or maybe a combination of both.  Renderers are typically not us
 ## This lab covers
 
 * Rendering String
-* Rendering Groovy Markup Template
+* Rendering Handlebars Templates
 * Rendering a custom object with a different content type depending on what has been requested
 
 ## Sign Posts
 
 `ratpack.render.Renderer`
 
-`ratpack.jackson.JacksonModule`
+`ratpack.jackson.Jackson`
