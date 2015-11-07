@@ -9,11 +9,11 @@ and allows arbitrary objects to be "pushed" into the context for use by downstre
 To complete this lab:
 
 1. Register `DefaultBookService` as the implementation of `BookService` to the context so it is available to all downstream handlers.
-1. Simply refactor the common logic of the two handlers in `Ratpack.groovy` into a new handler.  And make the resulting object available
+1. Simply refactor the common logic of the two handlers in `Lab03.java` into a new handler.  And make the resulting object available
 to the now downstream handlers using the context to do so.
 1. Make sure `BookSpec` passes.
 
-This time the hints are in the TODO within `Ratpack.groovy`
+This time the hints are in the TODO within `Lab03.java`
 
 ## This lab covers
 
