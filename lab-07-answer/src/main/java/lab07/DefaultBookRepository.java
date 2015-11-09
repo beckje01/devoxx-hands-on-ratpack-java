@@ -27,7 +27,7 @@ public class DefaultBookRepository implements BookRepository {
     // TODO - Implement addBook function
     // Hint - checkout Blocking#op(Block) to see how to integrate blocking code with Ratpack
     // Hint - checkout DSLContext#newRecord(Table, Object)
-    // Hint - lab07.jooq.tables.Book.BOOK is the repesentation for the underlying `book` table
+    // Hint - lab07.jooq.tables.Book.BOOK is the representation for the underlying `book` table
     return Blocking.op(() -> create.newRecord(BOOK, book).store());
   }
 
@@ -35,7 +35,7 @@ public class DefaultBookRepository implements BookRepository {
   public Promise<List<Book>> getBooks() {
     // TODO - Implement getBooks function
     // Hint - checkout Blocking#get(Block) to see how to integrate blocking code with Ratpack
-    // Hint - lab07.jooq.tables.Book.BOOK is the repesentation for the underlying `book` table
+    // Hint - lab07.jooq.tables.Book.BOOK is the representation for the underlying `book` table
     // Hint - checkout DSLContext#select() and ResultQuery#fetchInto(Class)
     return Blocking.get(() ->
       create.select().from(BOOK).fetchInto(Book.class)
@@ -46,7 +46,7 @@ public class DefaultBookRepository implements BookRepository {
   public Promise<Book> getBook(String isbn) {
     // TODO - Implement getBooks function
     // Hint - checkout Blocking#get(Block) to see how to integrate blocking code with Ratpack
-    // Hint - lab07.jooq.tables.Book.BOOK is the repesentation for the underlying `book` table
+    // Hint - lab07.jooq.tables.Book.BOOK is the representation for the underlying `book` table
     // Hint - checkout SelectWhereStep#where(Condition...) and ResultQuery#fetchOneInto(Class)
     return Blocking.get(() ->
       create.select().from(BOOK).where(BOOK.ISBN.equal(isbn)).fetchOneInto(Book.class)
