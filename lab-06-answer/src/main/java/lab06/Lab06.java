@@ -15,13 +15,13 @@ import ratpack.session.SessionModule;
 public class Lab06 {
 
   public static void main(String[] args) throws Exception {
-    RatpackServer.start(ratpackServerSpec -> {
+    RatpackServer.start(ratpackServerSpec ->
         ratpackServerSpec
           .serverConfig(s -> s.baseDir(BaseDir.find()))
           .registry(Guice.registry(bindingsSpec -> {
             bindingsSpec.module(SessionModule.class);
           }))
-          .handlers(chain -> {
+          .handlers(chain ->
             chain
               .all(RatpackPac4j.authenticator(new BasicAuthClient(new SimpleTestUsernamePasswordAuthenticator(), new UsernameProfileCreator())))
               .get(ctx -> ctx.render("Root GET"))
@@ -30,10 +30,8 @@ public class Lab06 {
                 void handle(Context ctx, HttpProfile profile) {
                   ctx.render("Secure stuff for " + profile.getUsername() + "!");
                 }
-              });
-          });
-      }
-
+              })
+          )
     );
   }
 
