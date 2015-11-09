@@ -8,7 +8,9 @@ include \
   'lab-04',
   'lab-04-answer',
   'lab-05',
-  'lab-05-answer'
+  'lab-05-answer',
+  'lab-06',
+  'lab-06-answer'
 
 rootProject.name = 'hands-on-ratpack'
 

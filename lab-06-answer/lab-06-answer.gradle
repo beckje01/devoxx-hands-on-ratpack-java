@@ -1,0 +1,8 @@
+dependencies {
+  compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.5.3'
+  compile ratpack.dependency('guice')
+  compile ratpack.dependency('session')
+
+  compile ratpack.dependency('pac4j')
+  compile "org.pac4j:pac4j-http:1.7.0"
+}
