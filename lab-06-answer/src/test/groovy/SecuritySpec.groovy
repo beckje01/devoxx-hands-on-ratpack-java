@@ -54,7 +54,7 @@ class SecuritySpec extends Specification {
 
   def "04 - Can display the username of the authenticated user"() {
     given:
-    def user = "Usser" + UUID.randomUUID()
+    def user = "User" + UUID.randomUUID()
 
     and:
     requestSpec({ requestSpec ->

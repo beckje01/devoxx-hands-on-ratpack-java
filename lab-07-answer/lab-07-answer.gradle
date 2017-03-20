@@ -7,47 +7,49 @@ buildscript {
   }
 
   dependencies {
-    classpath 'org.jooq:jooq-codegen:3.7.0'
+    classpath 'org.jooq:jooq-codegen:3.9.1'
     classpath 'com.h2database:h2:1.4.190'
   }
 }
 
 dependencies {
-  compile 'org.jooq:jooq:3.7.0'
+  compile 'org.jooq:jooq:3.9.1'
   compile ratpack.dependency('guice')
   compile ratpack.dependency('hikari')
   compile ratpack.dependency('h2')
 }
 
-task generateJooq(group: 'Lab 07 Utilities', description: 'Generates jOOQ library from src/main/resources.init.sql for this lab') << {
+task generateJooq(group: 'Lab 07 Utilities', description: 'Generates jOOQ library from src/main/resources.init.sql for this lab') {
+  doLast {
 // Use your favourite XML builder to construct the code generation configuration file
 // ----------------------------------------------------------------------------------
-  def writer = new StringWriter()
-  String initSql = Paths.get(projectDir.toString()).resolve('src/main/resources/init.sql').toString().replaceAll('\\\\', '/')
-  def xml = new groovy.xml.MarkupBuilder(writer)
-    .configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.7.0.xsd') {
-    jdbc() {
-      driver('org.h2.Driver')
-      url("jdbc:h2:mem:lab07;MODE=MySQL;INIT=RUNSCRIPT FROM '$initSql'")
-      user('sa')
-      password('')
+    def writer = new StringWriter()
+    String initSql = Paths.get(projectDir.toString()).resolve('src/main/resources/init.sql').toString().replaceAll('\\\\', '/')
+    def xml = new groovy.xml.MarkupBuilder(writer)
+      .configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.9.0.xsd') {
+      jdbc() {
+        driver('org.h2.Driver')
+        url("jdbc:h2:mem:lab07;MODE=MySQL;INIT=RUNSCRIPT FROM '$initSql'")
+        user('sa')
+        password('')
+      }
+      generator() {
+        database() {
+          inputSchema('lab07')
+        }
+        generate() {
+        }
+        target() {
+          packageName('lab07.jooq')
+          directory("$projectDir/src/main/java")
+        }
+      }
     }
-    generator() {
-      database() {
-        inputSchema('lab07')
-      }
-      generate() {
-      }
-      target() {
-        packageName('lab07.jooq')
-        directory("$projectDir/src/main/java")
-      }
-    }
-  }
 
-// Run the code generator
-// ----------------------
-  org.jooq.util.GenerationTool.generate(
-    javax.xml.bind.JAXB.unmarshal(new StringReader(writer.toString()), org.jooq.util.jaxb.Configuration.class)
-  )
+  // Run the code generator
+  // ----------------------
+    org.jooq.util.GenerationTool.generate(
+      javax.xml.bind.JAXB.unmarshal(new StringReader(writer.toString()), org.jooq.util.jaxb.Configuration.class)
+    )
+  }
 }

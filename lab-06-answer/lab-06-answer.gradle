@@ -3,5 +3,6 @@ dependencies {
   compile ratpack.dependency('session')
 
   compile ratpack.dependency('pac4j')
-  compile "org.pac4j:pac4j-http:1.7.0"
+  compile "org.pac4j:pac4j-http:1.8.8"
+  compile "commons-codec:commons-codec:1.10"
 }
