@@ -1,5 +1,5 @@
 # Hands on Ratpack 
-The Devoxx 2015 Hands on Lab for Ratpack.
+The Devoxx 2017 Hands on Lab for Ratpack.
 
 ## Prerequisites
 * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
